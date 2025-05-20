@@ -277,7 +277,7 @@ export const MemoModal: React.FC<MemoModalProps> = ({
             <div className="border-t border-slate-800 pt-6">
             <div className="mt-4 border border-slate-700 rounded-md overflow-hidden">
               <table className="w-full text-left">
-                <thead className="bg-slate-800">
+                <thead className="bg-violet-950/30">
                   <tr  className="text-lg text-center text-slate-400">
                     <th colSpan={3} className="p-3 ">History</th>
 
@@ -286,8 +286,8 @@ export const MemoModal: React.FC<MemoModalProps> = ({
                 <tbody>
                   <tr className="text-left text-slate-400">
                     <td className="p-3"><Circle className='fill-slate-400 mx-auto'/></td>
-                    <td className="p-3">A month ago <br /> <p className='text-xs'>2024-03-25</p></td>
-                    <td className="p-3">New Memo Created <br /> <p className='text-sm'>Abshee</p></td>
+                    <td className="p-3">A Year ago <br /> <p className='text-xs'>2024-03-25</p></td>
+                    <td className="p-3">New Memo Created <br /> <p className='text-sm'>Anas</p></td>
                   </tr>
                 </tbody>
               </table>

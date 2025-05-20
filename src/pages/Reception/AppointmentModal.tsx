@@ -227,6 +227,35 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
               </table>
             </div>
           </div>
+          <div className="border-t border-slate-800 pt-6">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-medium text-white">Payment Details</h3>
+              <button
+                type="button"
+                className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                ADD PAYMENT
+              </button>
+            </div>
+            <div className="mt-4 border border-slate-700 rounded-md overflow-hidden">
+              <table className="w-full text-left">
+                <thead className="bg-slate-800">
+                  <tr className="text-sm text-slate-400">
+                    <th className="p-3">Payment Type</th>
+                    <th className="p-3">Amount</th>
+                    <th className="p-3">Insurance/Credit Party</th>
+                    <th className="p-3">Reference</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="text-center text-slate-400">
+                    <td colSpan={4} className="p-4">No Payment</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </form>
 
         <div className="p-6 border-t border-slate-800 flex justify-end space-x-4 sticky bottom-0 bg-slate-900">

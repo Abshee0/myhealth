@@ -83,7 +83,6 @@ export const Reception: React.FC = () => {
       {showPatientInfo && (
         <>
           <PatientInfo />
-          <StatsCards />
         </>
       )}
       

@@ -142,12 +142,15 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ isOpen, onClose }) =
                 <tr className="border-t border-slate-700 text-white">
                   <td className="p-4">Erythrocyte Sedimentation Rate (ESR)</td>
                   <td className="p-4">
-                    <span className="bg-red-500/20 text-red-400 px-2 py-1 rounded">
-                      45
-                    </span>
+                    <input
+                type="text"
+                value="45"
+                readOnly
+                className="w-3/4 bg-red-500/20 border-red-700 rounded-md px-4 py-1 text-red-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500"
+              />
                   </td>
                   <td className="p-4">mm/Hr</td>
-                  <td className="p-4">0 - 8</td>
+                  <td className="p-4 text-center">0 - 8 <br /> <p className='text-xs'>E32</p></td>
                 </tr>
               </tbody>
             </table>
