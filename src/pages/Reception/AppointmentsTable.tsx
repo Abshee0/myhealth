@@ -24,7 +24,7 @@ export const AppointmentsTable: React.FC = () => {
         <tbody className="text-sm">
           <tr className="text-slate-400 text-center">
             <td colSpan={13} className="p-4">
-              No records found
+              No records found 
             </td>
           </tr>
         </tbody>

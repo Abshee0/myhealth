@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import { Search, RefreshCw, Plus } from 'lucide-react';
+import { Search, RefreshCw, Plus, Eye, Printer } from 'lucide-react';
 import { PatientInfo } from './PatientInfo';
 import { AppointmentsTable } from './AppointmentsTable';
 import { StatsCards } from './StatsCards';
 import { AppointmentModal } from './AppointmentModal';
 import { AddPatientModal } from './AddPatientModal';
+import { MemoModal } from './MemoModal'
 
 export const Reception: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showPatientInfo, setShowPatientInfo] = useState(false);
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
   const [isAddPatientModalOpen, setIsAddPatientModalOpen] = useState(false);
+  const [isMemoModalOpen, setIsMemoModalOpen] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -89,12 +91,65 @@ export const Reception: React.FC = () => {
         <div className="p-4 border-b border-slate-800">
           <h2 className="text-lg font-medium text-white">Appointments</h2>
         </div>
-        <AppointmentsTable />
+        <div className="overflow-x-auto">
+      <table className="w-full">
+        <thead>
+          <tr className="text-left text-sm font-medium text-slate-400 border-b border-slate-800">
+            <th className="p-4">MEMO NO</th>
+            <th className="p-4">DEPARTMENT</th>
+            <th className="p-4">DOCTOR</th>
+            <th className="p-4">LOCATION</th>
+            <th className="p-4">START TIME</th>
+            <th className="p-4">TOKEN NO</th>
+            <th className="p-4">STATUS</th>
+            <th className="p-4">APPOINTMENT TYPE</th>
+            <th className="p-4">ENQUIRY TYPE</th>
+            <th className="p-4">CONTACT NO</th>
+            <th className="p-4">FACILITY</th>
+            <th className="p-4">USER</th>
+            <th className="p-4">ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody className="text-sm">
+              {showPatientInfo  ? (
+                <tr 
+                  className="text-slate-300 hover:bg-slate-800 cursor-pointer"
+                >
+                  <td className="p-4">47653</td>
+                  <td className="p-4"></td>
+                  <td className="p-4">Dr. Smith</td>
+                  <td className="p-4">Reception</td>
+                  <td className="p-4">11:45</td>
+                  <td className="p-4">25</td>
+                  <td className="p-4">Memo Issued</td>
+                  <td className="p-4">Consultation</td>
+                  <td className="p-4"></td>
+                  <td className="p-4">9556555</td>
+                  <td className="p-4">Medlab Diagnostics</td>
+                  <td className="p-4">Anas</td>
+                  <td className='p-4 flex space-x-2'><Eye className='hover:text-slate-500' onClick={() => setIsMemoModalOpen(true)}/> <Printer className='hover:text-green-800'/></td>
+                </tr>
+              ) : (
+                <tr className="text-slate-400 text-center">
+                  <td colSpan={12} className="p-4">
+                    No Data
+                  </td>
+                </tr>
+              )}
+        </tbody>
+      </table>
+    </div>
       </div>
 
       <AppointmentModal
         isOpen={isAppointmentModalOpen}
         onClose={() => setIsAppointmentModalOpen(false)}
+        patientInfo={showPatientInfo ? demoPatient : undefined}
+      />
+
+      <MemoModal
+        isOpen={isMemoModalOpen}
+        onClose={() => setIsMemoModalOpen(false)}
         patientInfo={showPatientInfo ? demoPatient : undefined}
       />
 

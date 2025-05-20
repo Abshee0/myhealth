@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, RefreshCw, Check } from 'lucide-react';
+import { Search, RefreshCw, Check, BoxSelect, BookCheck } from 'lucide-react';
 
 interface PatientInfoProps {
   isVisible: boolean;
@@ -93,14 +93,7 @@ export const Phlebotomy: React.FC = () => {
           <div className="p-4 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <div className="text-lg font-medium text-white">Patient Info</div>
-              <button 
-                className={`px-4 py-2 text-sm font-medium text-white bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 ${
-                  !showPatientInfo ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
-                disabled={!showPatientInfo}
-              >
-                COLLECT SAMPLES
-              </button>
+              
             </div>
             <div className="flex items-center space-x-2">
               <form onSubmit={handleSearch} className="relative">
@@ -126,6 +119,25 @@ export const Phlebotomy: React.FC = () => {
 
           <PatientInfo isVisible={showPatientInfo} />
 
+          <div className='m-4 flex justify-end'>
+            <button 
+                className={`px-4 py-2 mr-2 text-sm font-medium text-white bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 ${
+                  !showPatientInfo ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
+                disabled={!showPatientInfo}
+              >
+                COLLECT SAMPLES
+              </button>
+                          <button 
+                className={`px-4 py-2 mr-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 ${
+                  !showPatientInfo ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
+                disabled={!showPatientInfo}
+              >
+                CREATE SAMPLES
+              </button>
+          </div>
+
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
@@ -146,11 +158,32 @@ export const Phlebotomy: React.FC = () => {
                 </tr>
               </thead>
               <tbody className="text-sm">
+                {showPatientInfo  ? (
+                <tr 
+                  className="text-slate-300 hover:bg-slate-800 cursor-pointer"
+                  
+                >
+                  <td className="p-4 bg-black"></td>
+                  <td className="p-4">S</td>
+                  <td className="p-4">BC123456</td>
+                  <td className="p-4">L0007</td>
+                  <td className="p-4">Erythrocyte Sedimentation Rate (ESR)</td>
+                  <td className="p-4">ESR</td>
+                  <td className="p-4">47653</td>
+                  <td className="p-4">LB</td>
+                  <td className="p-4">2024-03-25</td>
+                  <td className="p-4">Mohamed Aiman</td>
+                  <td className="p-4">Medlab Diagnostics</td>
+                  <td className="p-4">Pending</td>
+                  <td className='p-4'><input type='checkbox' className='h-4 w-4 border text-slate-900 border-slate-700 bg-slate-900 rounded-lg focus:ring-2 focus:ring-slate-900 focus:outline-none checked:bg-slate-800 checked:text-slate-800 ' /> </td>
+                </tr>
+              ) : (
                 <tr className="text-slate-400 text-center">
-                  <td colSpan={13} className="p-4">
+                  <td colSpan={12} className="p-4">
                     No Data
                   </td>
                 </tr>
+              )}
               </tbody>
             </table>
           </div>
@@ -176,10 +209,14 @@ export const Phlebotomy: React.FC = () => {
                 </tr>
               </thead>
               <tbody className="text-sm">
-                <tr className="text-slate-400 text-center">
-                  <td colSpan={5} className="p-4">
-                    No Data
-                  </td>
+                <tr 
+                  className="text-slate-300 hover:bg-slate-800 cursor-pointer"             
+                >
+                  <td className="p-4">47653</td>
+                  <td className="p-4">A220116</td>
+                  <td className="p-4">Mohamed Aiman</td>
+                  <td className="p-4">Pending</td>
+                  <td className="p-4">Medlab Diagnostics</td>
                 </tr>
               </tbody>
             </table>

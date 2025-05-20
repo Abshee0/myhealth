@@ -1,7 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FileDown, Printer, RefreshCw } from 'lucide-react';
+import { ResultsModal } from './ResultsModal';
 
 export const Samples: React.FC = () => {
+  const [searchQuery, setSearchQuery] = useState({
+    memoFrom: '',
+    memoTo: '',
+    barcode: '',
+    idPassport: '',
+    labNoFrom: '',
+    labNoTo: '',
+    date: '',
+  });
+  const [showData, setShowData] = useState(false);
+  const [isResultsModalOpen, setIsResultsModalOpen] = useState(false);
+
+  const handleSearch = () => {
+    const isMatch = 
+      searchQuery.memoFrom === '47653' || 
+      searchQuery.memoTo === '47653' ||
+      searchQuery.barcode === '47653' ||
+      searchQuery.idPassport === 'A220116' ||
+      searchQuery.labNoFrom === '47653' ||
+      searchQuery.labNoTo === '47653' ||
+      searchQuery.date === '2024-03-25';
+    
+    setShowData(isMatch);
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    setSearchQuery(prev => ({
+      ...prev,
+      [field]: value
+    }));
+    setShowData(false);
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -28,11 +62,15 @@ export const Samples: React.FC = () => {
                 <input
                   type="text"
                   placeholder="From"
+                  value={searchQuery.memoFrom}
+                  onChange={(e) => handleInputChange('memoFrom', e.target.value)}
                   className="w-full bg-slate-800 border border-slate-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 />
                 <input
                   type="text"
                   placeholder="To"
+                  value={searchQuery.memoTo}
+                  onChange={(e) => handleInputChange('memoTo', e.target.value)}
                   className="w-full bg-slate-800 border border-slate-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 />
               </div>
@@ -45,6 +83,8 @@ export const Samples: React.FC = () => {
               <input
                 type="text"
                 placeholder="Barcode"
+                value={searchQuery.barcode}
+                onChange={(e) => handleInputChange('barcode', e.target.value)}
                 className="w-full bg-slate-800 border border-slate-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               />
             </div>
@@ -56,6 +96,8 @@ export const Samples: React.FC = () => {
               <input
                 type="text"
                 placeholder="Document No"
+                value={searchQuery.idPassport}
+                onChange={(e) => handleInputChange('idPassport', e.target.value)}
                 className="w-full bg-slate-800 border border-slate-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               />
             </div>
@@ -68,11 +110,15 @@ export const Samples: React.FC = () => {
                 <input
                   type="text"
                   placeholder="From"
+                  value={searchQuery.labNoFrom}
+                  onChange={(e) => handleInputChange('labNoFrom', e.target.value)}
                   className="w-full bg-slate-800 border border-slate-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 />
                 <input
                   type="text"
                   placeholder="To"
+                  value={searchQuery.labNoTo}
+                  onChange={(e) => handleInputChange('labNoTo', e.target.value)}
                   className="w-full bg-slate-800 border border-slate-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 />
               </div>
@@ -84,6 +130,8 @@ export const Samples: React.FC = () => {
               </label>
               <input
                 type="date"
+                value={searchQuery.date}
+                onChange={(e) => handleInputChange('date', e.target.value)}
                 className="w-full bg-slate-800 border border-slate-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               />
             </div>
@@ -105,7 +153,10 @@ export const Samples: React.FC = () => {
             <button className="px-4 py-2 text-sm font-medium text-white bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
               ACCEPT SAMPLES
             </button>
-            <button className="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 flex items-center">
+            <button 
+              onClick={handleSearch}
+              className="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 flex items-center"
+            >
               <RefreshCw size={16} className="mr-2" />
               REFRESH
             </button>
@@ -131,18 +182,38 @@ export const Samples: React.FC = () => {
               </tr>
             </thead>
             <tbody className="text-sm">
-              <tr className="text-slate-400 text-center">
-                <td colSpan={12} className="p-4">
-                  No Data
-                </td>
-              </tr>
+              {showData ? (
+                <tr 
+                  className="text-slate-300 hover:bg-slate-800 cursor-pointer"
+                  onDoubleClick={() => setIsResultsModalOpen(true)}
+                >
+                  <td className="p-4">2024-03-25</td>
+                  <td className="p-4">47653</td>
+                  <td className="p-4">A220116</td>
+                  <td className="p-4">Mohamed Aiman</td>
+                  <td className="p-4">BC123456</td>
+                  <td className="p-4">2024-03-25</td>
+                  <td className="p-4">LB</td>
+                  <td className="p-4">Normal</td>
+                  <td className="p-4">Medlab Diagnostics</td>
+                  <td className="p-4">Medlab Diagnostics</td>
+                  <td className="p-4">Aasandha</td>
+                  <td className="p-4">Pending</td>
+                </tr>
+              ) : (
+                <tr className="text-slate-400 text-center">
+                  <td colSpan={12} className="p-4">
+                    No Data
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
 
         <div className="p-4 border-t border-slate-800 flex items-center justify-between">
           <div className="flex items-center space-x-2 text-sm text-slate-400">
-            <span>Total 0</span>
+            <span>Total {showData ? '1' : '0'}</span>
             <select className="bg-slate-800 border border-slate-700 rounded-md px-2 py-1">
               <option>50/page</option>
             </select>
@@ -168,6 +239,11 @@ export const Samples: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <ResultsModal 
+        isOpen={isResultsModalOpen}
+        onClose={() => setIsResultsModalOpen(false)}
+      />
     </div>
   );
 };
