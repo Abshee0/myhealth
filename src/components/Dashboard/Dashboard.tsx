@@ -3,7 +3,7 @@ import { StatsGrid } from './StatsGrid';
 import { Calendar } from './Calendar/Calendar';
 
 export const Dashboard: React.FC = () => {
-  const [activeView, setActiveView] = useState<'day' | 'week' | 'month'>('week');
+  const [activeView, setActiveView] = useState<'day' | 'week' | 'month'>('month');
   
   return (
     <div className="space-y-6">

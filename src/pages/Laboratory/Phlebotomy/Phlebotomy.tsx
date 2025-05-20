@@ -128,11 +128,9 @@ export const Phlebotomy: React.FC = () => {
               >
                 COLLECT SAMPLES
               </button>
-                          <button 
-                className={`px-4 py-2 mr-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 ${
-                  !showPatientInfo ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
-                disabled={!showPatientInfo}
+              <button 
+                className='px-4 py-2 mr-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 opacity-50 cursor-not-allowed'
+                disabled
               >
                 CREATE SAMPLES
               </button>
@@ -174,7 +172,7 @@ export const Phlebotomy: React.FC = () => {
                   <td className="p-4">2024-03-25</td>
                   <td className="p-4">Mohamed Aiman</td>
                   <td className="p-4">Medlab Diagnostics</td>
-                  <td className="p-4">Pending</td>
+                  <td className="p-4">Finalized</td>
                   <td className='p-4'><input type='checkbox' className='h-4 w-4 border text-slate-900 border-slate-700 bg-slate-900 rounded-lg focus:ring-2 focus:ring-slate-900 focus:outline-none checked:bg-slate-800 checked:text-slate-800 ' /> </td>
                 </tr>
               ) : (

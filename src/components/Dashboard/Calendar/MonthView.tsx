@@ -23,7 +23,7 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
         <div className="flex-1">
           {hasEvent && (
             <div className="mt-2 p-1 text-xs bg-indigo-900/40 text-indigo-300 rounded border border-indigo-800">
-              Meeting with Dr. Smith
+              Meeting with Aiman
             </div>
           )}
         </div>

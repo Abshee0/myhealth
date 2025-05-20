@@ -198,7 +198,7 @@ export const Samples: React.FC = () => {
                   <td className="p-4">Medlab Diagnostics</td>
                   <td className="p-4">Medlab Diagnostics</td>
                   <td className="p-4">Aasandha</td>
-                  <td className="p-4">Pending</td>
+                  <td className="p-4">Finalized</td>
                 </tr>
               ) : (
                 <tr className="text-slate-400 text-center">
