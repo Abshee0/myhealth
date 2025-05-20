@@ -38,6 +38,10 @@ export const Reception: React.FC = () => {
     insurance: 'Aasandha'
   };
 
+  const handlePrint = () => {
+    
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -126,7 +130,7 @@ export const Reception: React.FC = () => {
                   <td className="p-4">9556555</td>
                   <td className="p-4">Medlab Diagnostics</td>
                   <td className="p-4">Anas</td>
-                  <td className='p-4 flex space-x-2'><Eye className='hover:text-slate-500' onClick={() => setIsMemoModalOpen(true)}/> <Printer className='hover:text-green-800'/></td>
+                  <td className='p-4 flex space-x-2'><Eye className='hover:text-slate-500' onClick={() => setIsMemoModalOpen(true)}/> <Printer className='hover:text-green-800' onClick={handlePrint}/></td>
                 </tr>
               ) : (
                 <tr className="text-slate-400 text-center">

@@ -61,7 +61,7 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ isOpen, onClose }) =
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-400">Email</label>
-                <div className="mt-1 text-slate-400">aiman@example.com</div>
+                <div className="mt-1 text-slate-400">-</div>
               </div>
             </div>
 
@@ -146,7 +146,7 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ isOpen, onClose }) =
                 type="text"
                 value="45"
                 readOnly
-                className="w-3/4 bg-red-500/20 border-red-700 rounded-md px-4 py-1 text-red-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500"
+                className="w-3/4 bg-red-500/20 border border-slate-700 rounded-md px-4 py-1 text-red-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500"
               />
                   </td>
                   <td className="p-4">mm/Hr</td>
